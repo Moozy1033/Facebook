@@ -17,9 +17,10 @@
             </div>
             <div class="card px-3 pt-3 shadow border-0" style="width: 35%; background-color: white">
                 <div class="">
-                    <input class="form-control input" type="text" placeholder="Email address or phone number">
-                    <input class="form-control input mt-3" type="password" placeholder="Password">
-                    <button class="btn btn-primary fw-bold w-100 my-3 fs-5 ">Log in</button>
+                    <div id="wrong" class="alert alert-danger rounded-0 text-center fw-medium text-black" style="display: none; font-size: 14px;">Wrong Credentials</div>
+                    <input id="emailPhone" class="form-control input" type="text" placeholder="Email address or phone number">
+                    <input id="pass" class="form-control input mt-3" type="password" placeholder="Password">
+                    <button id="submit" class="btn btn-primary fw-bold w-100 my-3 fs-5 ">Log in</button>
                     <p class="text-center text-primary forgot" style="font-size: 15px;">Forgotten password?</p>
                     <hr>
                     <div class="text-center mb-4 mt-4">
@@ -30,5 +31,26 @@
         </div>
     </section>
     <div>class</div>
+
+
+    <script>
+        const btn = document.getElementById('submit')
+        const ePhone = document.getElementById('emailPhone')
+        const password = document.getElementById('pass')
+        btn.addEventListener('click', ()=> {
+            if (ePhone.value === '' || password.value === '') {
+                wrong.style.display = 'block'
+                
+            } else {
+                const userData = {
+                    emailPhone: ePhone.value,
+                    passwords: password.value,
+                }
+                wrong.style.display = 'none'
+                ePhone.value = ''
+                password.value = ''
+            }
+        })
+    </script>
 </body>
 </html>
